@@ -7,12 +7,24 @@ import SiteNavigation from './components/SiteNavigation.vue';
   
     <div class="flex flex-column min-h-screen font-Roboto bg-weather-primary">
       <SiteNavigation/>
-      <RouterView/>
+      <RouterView class="flex-1" v-slot="{ Component }">
+        <Transition name="page" mode="out-in">
+          <component :is="Component" />
+        </Transition>
+    </RouterView>
     </div>
 
   
 </template>
 
-<style lang="scss" scoped>
+<style>
+.page-enter-active,
+.page-leave-active {
+  transition: 600ms ease all;
+}
 
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+}
 </style>
