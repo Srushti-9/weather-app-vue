@@ -137,12 +137,13 @@
   <script setup>
   import axios from "axios";
   import { useRoute, useRouter } from "vue-router";
-  
+  import config from '@/config';
+
   const route = useRoute();
   const getWeatherData = async () => {
     try {
       const weatherData = await axios.get(
-        `https://api.openweathermap.org/data/2.5/onecall?lat=${route.query.lat}&lon=${route.query.lng}&exclude={part}&appid=7efa332cf48aeb9d2d391a51027f1a71&units=imperial`
+        `https://api.openweathermap.org/data/2.5/onecall?lat=${route.query.lat}&lon=${route.query.lng}&exclude={part}&appid=${config.apiKey}&units=imperial`
       );
   
       // cal current date & time
